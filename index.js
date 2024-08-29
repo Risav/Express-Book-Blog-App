@@ -5,6 +5,8 @@ import methodOverride from 'method-override';
 const app = express();
 const port = 4000;
 
+app.set('view engine', "ejs");
+
 app.use(bodyParser.urlencoded({ extended:false }));
 
 app.use(methodOverride(function (req, res) {
