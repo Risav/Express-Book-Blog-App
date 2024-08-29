@@ -20,18 +20,17 @@ app.use(methodOverride(function (req, res) {
 
 app.use(express.static('public'));
 
-app.set('views', './views');
 app.set('view engine', "ejs");
 
 app.get("/", (req, res) => {
     
-    res.render("index")
+    res.render("/views/index.ejs")
 });
 
 let posts = [];
 
 app.get("/submit", (req, res) => {
-    res.render('index', {posts});
+    res.render('/views/index.ejs', {posts});
 })
 
 app.post("/submit", (req, res) => {
@@ -56,5 +55,3 @@ app.delete("/delete", (req, res) => {
 app.listen(port, () => {
     console.log(`Server running on port ${port}`)
 });
-
-export default app;
