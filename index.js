@@ -5,7 +5,7 @@ import methodOverride from 'method-override';
 const app = express();
 const port = 4000;
 
-app.set('view engine', "ejs");
+
 
 app.use(bodyParser.urlencoded({ extended:false }));
 
@@ -20,15 +20,17 @@ app.use(methodOverride(function (req, res) {
 
 app.use(express.static('public'));
 
+app.set('view engine', "ejs");
+
 app.get("/", (req, res) => {
     
-    res.render("index.ejs")
+    res.render("index")
 });
 
 let posts = [];
 
 app.get("/submit", (req, res) => {
-    res.render('index.ejs', {posts});
+    res.render('index', {posts});
 })
 
 app.post("/submit", (req, res) => {
