@@ -1,0 +1,114 @@
+<%- include("Header.ejs") %>
+
+<div class="main">
+    <div class="sub-heading">
+        <h1> BOOKS FOR LIFE</h1>
+    </div>
+
+
+    <div class="post-section">
+        <div class="left-section">
+            <h3>BOOKS FOR LIFE</h3>
+            <p>Dedicated to discussing, reveiwing, and moreover post the stuff that you want to share with the world. Get the list of book recommendations based on themes, genres, or special occasions. 
+            </p>
+            </br>
+            <h3>Useful links:</h3>
+            <a href="#">Book collections</a>
+            </br>
+            <a href="#">Reviews</a>
+            </br>
+            <a href="#">Genres</a>
+            </br>
+            <a href="#">Resources</a>
+            </br>
+            <a href="#">Contact</a>
+        </div>
+        <div class="right-section">
+            <h2>Submit your own story!!</h2>
+            <div class="form-input">
+                <form action="/submit" method="POST">
+                    <h4 class="name">Name: </h4>
+                    <input class="name-input" type="text" name="name" placeholder="Your name!!" />
+                    <h4 class="title">Title: </h4>
+                    <input class="title-input" type="text" name="title" placeholder="Title of your post!!" />
+                    <h4 class="desc">Description:</h4>
+                    <textarea class="desc-text" type="text" name="description" placeholder="Description of your post!!"></textarea>
+                    <div></div>
+                    <input class="submit-btn" type="submit" value="SUBMIT" />
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="blog-section">
+            <div class="blogSection1">
+                <div class="profile">
+                    <img src="/face.png" alt="profile picture">
+                    <p class="name-value">Tommy Shelby</p>
+                </div>
+                <p class="title-value">Importance of reading books </p>
+                <p class="desc-value">Knowledge and Learning: Books provide a vast reservoir of information and insights on various subjects, enhancing your knowledge and understanding of the world.
+                </br>
+                    Mental Stimulation: Regular reading keeps your brain active, improving cognitive functions and reducing the risk of mental decline as you age.
+                </br>
+                    Empathy and Perspective: Fiction and biographies allow you to experience different lives and viewpoints, fostering empathy and broadening your perspective.</p>
+                <div class="line"></div>
+                <button class="like-btn">Like &#9829;</button>
+            </div>
+
+            <div class="blogSection1">
+                <div class="profile">
+                    <img src="/face.png" alt="profile picture">
+                    <p class="name-value">Jack Harrison</p>
+                </div>
+                <p class="title-value">Importance of reading books </p>
+                <p class="desc-value">Knowledge and Learning: Books provide a vast reservoir of information and insights on various subjects, enhancing your knowledge and understanding of the world.
+                </br>
+                    Mental Stimulation: Regular reading keeps your brain active, improving cognitive functions and reducing the risk of mental decline as you age.
+                </br>
+                    Empathy and Perspective: Fiction and biographies allow you to experience different lives and viewpoints, fostering empathy and broadening your perspective.</p>
+                <div class="line"></div>
+                <button class="like-btn">Like &#9829;</button>
+            </div>
+            
+            <% if (locals.posts) { %>
+            <% posts.forEach(function (post) { %>
+                <form action="/delete" method="POST">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <input type="hidden" name="id" value="<%= post.id %>">
+                    <div class="blogSection1">
+                        <div class="profile">
+                            <img src="/face.png" alt="profile picture">
+                            <p class="name-value"><%= post.name %> </p>
+                        </div>
+                    
+                        <p class="title-value"><%= post.title %> </p>
+                        <p class="desc-value"><%= post.description %></p>
+                        <div class="line"></div>
+                        <button type="submit" class="delete-btn">DELETE</button>
+                        <button class="like-btn">Like &#9829; </button>
+                    </div>
+                </form>
+                    
+            <%}); %>
+            <% } %>
+    </div>
+</div>
+    
+ 
+    
+
+
+
+
+
+
+
+
+
+
+
+<%- include('Footer.ejs') %>
+    
+
