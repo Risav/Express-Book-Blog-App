@@ -1,11 +1,13 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import methodOverride from 'method-override';
+import {fileURLToPath} from 'url';
+import { dirname } from 'path';
 
 const app = express();
 const port = 4000;
 
-
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 app.use(bodyParser.urlencoded({ extended:false }));
 
