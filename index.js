@@ -24,13 +24,13 @@ app.set('view engine', "ejs");
 
 app.get("/", (req, res) => {
     
-    res.render("/views/index.ejs")
+    res.render(__dirname + "/views/index.ejs")
 });
 
 let posts = [];
 
 app.get("/submit", (req, res) => {
-    res.render('/views/index.ejs', {posts});
+    res.render('index.ejs', {posts});
 })
 
 app.post("/submit", (req, res) => {
