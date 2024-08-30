@@ -22,10 +22,13 @@ app.use(methodOverride(function (req, res) {
 
 app.use(express.static('public'));
 
+// Setting EJS as the view engine
 app.set('view engine', "ejs");
 
+// Setting the path for the views directory
+app.set('views', path.join(__dirname, 'views'));
+
 app.get("/", (req, res) => {
-    
     res.render(__dirname + "/views/index.ejs")
 });
 
